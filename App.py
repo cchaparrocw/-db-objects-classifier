@@ -7,8 +7,10 @@ from os import listdir
 from os.path import isfile, join
 from stat import ST_MODE, S_IWRITE
 
-from  core.validator.BuilderFileValidator import BuilderFileValidator
+from core.validator.BuilderFileValidator import BuilderFileValidator
 from core.classifier.BuilderFileClassifier import BuilderFileClassifier
+from core.Router import Router
+from core.ModuleExtractor import ModuleExtractor
 
 pathDeploy = r'build/'
 pathSource = r'files/'
@@ -52,15 +54,22 @@ def loadFiles():
     return [ f for f in listdir(pathSource ) if isfile(join(pathSource,f)) ]
 
 def main():
-    buildDirectories()
-    files = loadFiles()
+    #buildDirectories()
+    #files = loadFiles()
+    #for file in files:
+    #    builderValidator  = BuilderFileValidator()
+    #    validator = builderValidator.build()
+    #    type = validator.validate(file)
+    #    builderClassifier = BuilderFileClassifier()
+    #    classifier = builderClassifier.build()
+    #    classifier.classifier(type,pathSource+file)
+    #router = Router()
+    #path = router.getPath("index","aa")
+    #print(path)
+    extractor = ModuleExtractor()
+    files =[ "ICE_LNT_ACUMULADO.sql", "LNT_ACUMULADO.sql", "LNT_ACUMULADO_PK.sql", "CGT_FONDO_MOV_F5.sql", "CGT_FONDO_PK.sql" ]
     for file in files:
-        builderValidator  = BuilderFileValidator()
-        validator = builderValidator.build()
-        type = validator.validate(file)
-        builderClassifier = BuilderFileClassifier()
-        classifier = builderClassifier.build()
-        classifier.classifier(type,pathSource+file)
+        print(extractor.getModule(file))
 
 if __name__ == "__main__":
     main()

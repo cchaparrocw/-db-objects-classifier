@@ -1,4 +1,4 @@
-
+# coding=utf-8
 class Router:
 
     def __init__(self):
