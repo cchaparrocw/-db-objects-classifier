@@ -10,7 +10,7 @@ class FileValidators(Enum):
     CONSTRAINT = 6
     NO_CONSTRAINT = 7
     VIEW_BI = 8
-    VIEW_DATA = 9 
+    VIEW_DATA = 9
     VIEW_JOIN =  10
     VIEW_LOV = 11
     VIEW_REPORT = 12

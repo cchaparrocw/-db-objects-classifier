@@ -18,7 +18,7 @@ class PackageFileValidator(FileValidator):
         return self.checkExpression(expressionPackage,file)
 
     def isPackageBody(self,file):
-        expressionPackage = '[a-zA-Z][a-zA-Z][P]+_.*_1.sql'
+        expressionPackage = '[a-zA-Z][a-zA-Z][P]+_.*(_1.sql)$'
         return self.checkExpression(expressionPackage,file)
 
     def validate(self, file ):
