@@ -16,7 +16,7 @@ class PackageFileClassifier(FileClassifier):
     def classifier(self,type,file):
         if type == FileValidators.PACKAGE.value :
             shutil.copy2(file, "build/sql/fisica/logica-plsql/package")
-        elif type === FileValidators.PACKAGE_BODY.value:
+        elif type == FileValidators.PACKAGE_BODY.value:
             shutil.copy2(file, "build/sql/fisica/logica-plsql/package-body")
         else:
             self.next.classifier(type,file)
