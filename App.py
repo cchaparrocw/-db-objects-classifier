@@ -17,7 +17,7 @@ pathSource = r'files/'
 paths = [
     'sql/fisica/table',
     'sql/fisica/sequence',
-    'sql/fisica/index',
+    'sql/fisica/index/',
     'sql/fisica/constraint',
     'sql/fisica/constraint/fk',
     'sql/fisica/constraint/nofk',
@@ -56,6 +56,7 @@ def loadFiles():
 def main():
     #buildDirectories()
     #files = loadFiles()
+<<<<<<< Updated upstream
     #for file in files:
     #    builderValidator  = BuilderFileValidator()
     #    validator = builderValidator.build()
@@ -70,6 +71,12 @@ def main():
     files =[ "ICE_LNT_ACUMULADO.sql", "LNT_ACUMULADO.sql", "LNT_ACUMULADO_PK.sql", "CGT_FONDO_MOV_F5.sql", "CGT_FONDO_PK.sql" ]
     for file in files:
         print(extractor.getModule(file))
+=======
+    builderValidator  = BuilderFileValidator()
+    validator = builderValidator.build()
+    type = validator.validate("LNT_acumulado_U1.sql")
+    print(type)
+>>>>>>> Stashed changes
 
 if __name__ == "__main__":
     main()

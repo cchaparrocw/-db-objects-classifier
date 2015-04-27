@@ -4,8 +4,6 @@ from  core.validator.FileValidators import FileValidators
 
 class SequenceFileValidator(FileValidator):
 
-
-
     def __init__(self):
         FileValidator.__init__(self)
         self.next = FileValidator()

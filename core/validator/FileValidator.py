@@ -18,6 +18,7 @@ class FileValidator:
             Valor al que se le va verificar la expresion regular
         """
         value = value.upper()
+        print(value)
         result = re.match( expression,value )
         return True if result else False
 

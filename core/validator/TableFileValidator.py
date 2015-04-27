@@ -14,7 +14,7 @@ class TableFileValidator(FileValidator):
         self.next = next
 
     def isTable(self,file):
-        expression = '[a-zA-Z][a-zA-Z][T]+_'
+        expression = '[a-zA-Z][a-zA-Z][tT]+_([a-zA-Z])*.sql$'
         return self.checkExpression(expression,file)
 
     def validate(self, file ):
