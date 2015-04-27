@@ -35,7 +35,7 @@ def buildDirectories():
     #para eliminarla
     #esto si se quiere borrar todo
     if os.path.exists( pathDeploy ):
-        shutil.rmtree( pathDeploy )
+        shutil.rmtree( pathDeploy, ignore_errors=True )
         #shutil.rmtree( pathDeploy , onerror=del_rw )
 
     #creo la estructura de directorios para copiar la información

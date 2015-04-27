@@ -14,6 +14,6 @@ class TableFileClassifier(FileClassifier):
 
     def classifier(self,type,file):
         if type == FileValidators.TABLE.value :
-            shutil.move(file, "build/sql/fisica/table")
+            shutil.copy2(file, "build/sql/fisica/table")
         else:
             self.next.classifier(type,file)
