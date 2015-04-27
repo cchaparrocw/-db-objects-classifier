@@ -17,15 +17,8 @@ class FileValidator:
         result = re.match( expression,value )
         return True if result else False
 
+    def setNext(self,next):
+        self.next = next
+
     def validate():
         pass
-    ##esta funcion no va aquí.
-    def typeFile():
-        """
-        Funcion que verifica que tipo de archivo es
-        Vista, secuencia,tabla
-        """
-        vistaValidator = VistaValidator()
-        tableValidator = TableValidator()
-        vistaValidator.setNext(tableValidator)
-        sequenceValidator = SequenceValidator()
