@@ -1,6 +1,10 @@
+# coding=utf-8
+import re
 
 class FileValidator:
 
+    def __init__(self):
+        pass
     def checkExpression( self,expression,value):
         """
         Funcion que verifica que un patron(expresion)
@@ -18,7 +22,15 @@ class FileValidator:
         return True if result else False
 
     def setNext(self,next):
-        self.next = next
+         raise NotImplementedError('subclasses must override setNext()!')
 
-    def validate():
-        pass
+    def validate(self,file):
+        """
+        Función que se encarga de validar que tipo de archivo es.
+
+        Parameters
+        ----------
+        file:string
+            Nombre del archivo a validar.
+        """
+        raise NotImplementedError('subclasses must override validate()!')
