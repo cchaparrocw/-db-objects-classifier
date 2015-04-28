@@ -3,12 +3,9 @@
 
 from  core.validator.TableFileValidator import TableFileValidator
 from  core.validator.SequenceFileValidator import SequenceFileValidator
-<<<<<<< Updated upstream
 from  core.validator.PackageFileValidator import PackageFileValidator
-=======
 from  core.validator.VistaFileValidator import VistaFileValidator
 from  core.validator.ConstraintFileValidator import ConstraintFileValidator
->>>>>>> Stashed changes
 
 class BuilderFileValidator:
 

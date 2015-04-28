@@ -17,6 +17,5 @@ class SequenceFileClassifier(FileClassifier):
             module = self._extractor.getModule(file)
             path = self._router.getPath("sequence",module)
             shutil.copy2(file, path)
-            shutil.copy2(file,path)
         else:
             self.next.classifier(type,file)

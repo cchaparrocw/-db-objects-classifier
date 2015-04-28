@@ -9,7 +9,7 @@ class FileClassifier:
     def __init__(self):
         self._router = Router()
         self._extractor = ModuleExtractor()
-        
+
     def setNext(self,next):
         raise NotImplementedError('subclasses must override setNext()!')
 
