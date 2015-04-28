@@ -1,9 +1,9 @@
 # coding=utf-8
 from core.classifier.FileClassifier import FileClassifier
-from  core.validator.FileValidators import FileValidators
+from core.validator.FileValidators import FileValidators
 import shutil
 
-class ConstrainFileClassifier(FileClassifier):
+class ConstraintFileClassifier(FileClassifier):
 
     def __init__(self):
         FileClassifier.__init__(self)

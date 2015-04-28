@@ -9,12 +9,12 @@ from core.classifier.ConstraintFileClassifier import ConstraintFileClassifier
 class BuilderFileClassifier():
 
     def build(self):
-        tableFileClassifier = TableFileClassifier()
-        sequenceFileClassifier = SequenceFileClassifier()
+        tableFileClassifier      = TableFileClassifier()
+        sequenceFileClassifier   = SequenceFileClassifier()
         tableFileClassifier.setNext(sequenceFileClassifier)
-        packageFileClassifier = PackageFileClassifier()
+        packageFileClassifier    = PackageFileClassifier()
         packageFileClassifier.setNext(sequenceFileClassifier)
-        vistaFileClassifier = ViewFileClassifier()
+        vistaFileClassifier      = ViewFileClassifier()
         vistaFileClassifier.setNext(packageFileClassifier)
         constraintFileClassifier = ConstraintFileClassifier()
         constraintFileClassifier.setNext(constraintFileClassifier)
