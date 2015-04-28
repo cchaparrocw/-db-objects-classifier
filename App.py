@@ -54,29 +54,18 @@ def loadFiles():
     return [ f for f in listdir(pathSource ) if isfile(join(pathSource,f)) ]
 
 def main():
-    #buildDirectories()
-    #files = loadFiles()
-<<<<<<< Updated upstream
-    #for file in files:
-    #    builderValidator  = BuilderFileValidator()
-    #    validator = builderValidator.build()
-    #    type = validator.validate(file)
-    #    builderClassifier = BuilderFileClassifier()
-    #    classifier = builderClassifier.build()
-    #    classifier.classifier(type,pathSource+file)
-    #router = Router()
-    #path = router.getPath("index","aa")
-    #print(path)
-    extractor = ModuleExtractor()
-    files =[ "ICE_LNT_ACUMULADO.sql", "LNT_ACUMULADO.sql", "LNT_ACUMULADO_PK.sql", "CGT_FONDO_MOV_F5.sql", "CGT_FONDO_PK.sql" ]
+    buildDirectories()
+    files = loadFiles()
+
     for file in files:
-        print(extractor.getModule(file))
-=======
-    builderValidator  = BuilderFileValidator()
-    validator = builderValidator.build()
-    type = validator.validate("LNT_acumulado_U1.sql")
-    print(type)
->>>>>>> Stashed changes
+        builderValidator  = BuilderFileValidator()
+        validator = builderValidator.build()
+        type = validator.validate(file)
+        builderClassifier = BuilderFileClassifier()
+        classifier = builderClassifier.build()
+        classifier.classifier(type,pathSource+file)
+
+
 
 if __name__ == "__main__":
     main()
