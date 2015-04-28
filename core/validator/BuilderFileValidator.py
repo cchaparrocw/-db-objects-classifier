@@ -21,14 +21,11 @@ class BuilderFileValidator:
         tableValidator = TableFileValidator()
         sequenceValidator = SequenceFileValidator()
         tableValidator.setNext(sequenceValidator)
-<<<<<<< Updated upstream
         packageValidator = PackageFileValidator()
         packageValidator.setNext(sequenceValidator )
-
-=======
         vistaValidator=VistaFileValidator()
-        sequenceValidator.setNext(vistaValidator)
+        vistaValidator.setNext(packageValidator)
         constraintValidator=ConstraintFileValidator()
-        vistaValidator.setNext(constraintValidator)
->>>>>>> Stashed changes
+        constraintValidator.setNext(vistaValidator)
+
         return tableValidator
