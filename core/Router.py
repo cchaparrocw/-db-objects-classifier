@@ -18,7 +18,8 @@ class Router:
             ('lov',          'sql/query/lov/%(modulo)s'),
             ('join',         'sql/query/join/%(modulo)s'),
             ('report',       'sql/query/report/%(modulo)s'),
-            ('bi',           'sql/query/bi/%(modulo)s')
+            ('bi',           'sql/query/bi/%(modulo)s'),
+            ('default',      'default')
         ]
 
     def getPath(self,path,module):
@@ -26,3 +27,8 @@ class Router:
             if key==path:
                 return self.pathDeploy + value % {'modulo':module}
         return ""
+    def getSimplePaths(self):
+        list = []
+        for key,value in self.paths:
+             list.append(value % {'modulo':""})
+        return list

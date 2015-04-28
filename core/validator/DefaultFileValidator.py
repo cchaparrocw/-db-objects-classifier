@@ -4,7 +4,7 @@ from  core.validator.FileValidator import FileValidator
 from  core.validator.FileValidators import FileValidators
 
 
-class TableFileValidator(FileValidator):
+class DefaultFileValidator(FileValidator):
 
     def __init__(self):
         FileValidator.__init__(self)
@@ -18,8 +18,4 @@ class TableFileValidator(FileValidator):
         return self.checkExpression(expression,file)
 
     def validate(self, file ):
-        result =  self.isTable(file)
-        if result:
-            return FileValidators.TABLE.value
-        else:
-            return self.next.validate(file)
+        return FileValidators.NO_VALID.value

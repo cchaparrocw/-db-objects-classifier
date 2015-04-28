@@ -12,58 +12,45 @@ from core.classifier.BuilderFileClassifier import BuilderFileClassifier
 from core.Router import Router
 from core.ModuleExtractor import ModuleExtractor
 
-pathDeploy = r'build/'
-pathSource = r'files/'
-paths = [
-    'sql/fisica/table',
-    'sql/fisica/sequence',
-    'sql/fisica/index/',
-    'sql/fisica/constraint',
-    'sql/fisica/constraint/fk',
-    'sql/fisica/constraint/nofk',
-    'sql/fisica/logica-plsql',
-    'sql/fisica/logica-plsql/package',
-    'sql/fisica/logica-plsql/package-body',
-    'sql/fisica/logica-plsql/trigger',
-    'sql/query/datos',
-    'sql/query/lov',
-    'sql/query/join',
-    'sql/query/report',
-    'sql/query/bi'
-]
 
 def buildDirectories():
     #verifico si existe la estructura creada anteriormente
     #para eliminarla
     #esto si se quiere borrar todo
-    if os.path.exists( pathDeploy ):
-        shutil.rmtree( pathDeploy, ignore_errors=True )
+    router = Router()
+    if os.path.exists( router.pathDeploy ):
+        shutil.rmtree( router.pathDeploy, ignore_errors=True )
         #shutil.rmtree( pathDeploy , onerror=del_rw )
 
     #creo la estructura de directorios para copiar la información
     #posteriormente.
+    router = Router()
+    paths = router.getSimplePaths()
+    print(paths)
     for path in paths:
-        os.makedirs( pathDeploy + path )
+        os.makedirs( router.pathDeploy + path )
 
 def del_rw(action,name, exc ):
     os.chmod(name, stat.S_IWRITE)
     os.remove(name)
 
 def loadFiles():
-
-    return [ f for f in listdir(pathSource ) if isfile(join(pathSource,f)) ]
+    router = Router()
+    return [ f for f in listdir(router.pathSource ) if isfile(join(router.pathSource,f)) ]
 
 def main():
     buildDirectories()
     files = loadFiles()
-
+    router = Router()
     for file in files:
         builderValidator  = BuilderFileValidator()
         validator = builderValidator.build()
+        print(file)
         type = validator.validate(file)
         builderClassifier = BuilderFileClassifier()
         classifier = builderClassifier.build()
-        classifier.classifier(type,pathSource+file)
+        print(file)
+        classifier.classifier(type,router.pathSource+file)
 
 
 

@@ -6,6 +6,8 @@ from  core.validator.SequenceFileValidator import SequenceFileValidator
 from  core.validator.PackageFileValidator import PackageFileValidator
 from  core.validator.VistaFileValidator import VistaFileValidator
 from  core.validator.ConstraintFileValidator import ConstraintFileValidator
+from  core.validator.DefaultFileValidator import DefaultFileValidator
+
 
 class BuilderFileValidator:
 
@@ -16,13 +18,21 @@ class BuilderFileValidator:
         """
 
         tableValidator = TableFileValidator()
+
         sequenceValidator = SequenceFileValidator()
         tableValidator.setNext(sequenceValidator)
+
         packageValidator = PackageFileValidator()
-        packageValidator.setNext(sequenceValidator )
+        sequenceValidator.setNext(packageValidator )
+
         vistaValidator=VistaFileValidator()
-        vistaValidator.setNext(packageValidator)
+        packageValidator.setNext(vistaValidator)
+
         constraintValidator=ConstraintFileValidator()
+        vistaValidator.setNext(constraintValidator)
         constraintValidator.setNext(vistaValidator)
 
+        defaultValidator = DefaultFileValidator()
+        #apuntar el siguiente al ultimo
+        constraintValidator.setNext(defaultValidator)
         return tableValidator
