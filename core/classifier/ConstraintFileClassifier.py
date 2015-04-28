@@ -13,9 +13,13 @@ class ConstrainFileClassifier(FileClassifier):
         self.next = next
 
     def classifier(self,type,file):
+
+
         if type == FileValidators.CONSTRAINT_FK.value :
-            shutil.copy2(file, "build/sql/fisica/contraint/fk")
+            path = self._router.getPath("fk",module)
+            shutil.copy2(file, path)
         elif type == FileValidators.CONSTRAINT_NOFK.value :
-                shutil.copy2(file, "build/sql/fisica/contraint/nofk")
-            else:
-                self.next.classifier(type,file)
+            path = self._router.getPath("nofk",module)
+            shutil.copy2(file, path)
+        else:
+            self.next.classifier(type,file)

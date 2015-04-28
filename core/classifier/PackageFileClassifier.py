@@ -14,9 +14,12 @@ class PackageFileClassifier(FileClassifier):
         self.next = next
 
     def classifier(self,type,file):
+        module = self._extractor.getModule(file)
         if type == FileValidators.PACKAGE.value :
-            shutil.copy2(file, "build/sql/fisica/logica-plsql/package")
+            path = self._router.getPath("package",module)
+            shutil.copy2(file, path)
         elif type == FileValidators.PACKAGE_BODY.value:
-            shutil.copy2(file, "build/sql/fisica/logica-plsql/package-body")
+            path = self._router.getPath("package_body",module)
+            shutil.copy2(file, path)
         else:
             self.next.classifier(type,file)

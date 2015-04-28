@@ -14,6 +14,9 @@ class SequenceFileClassifier(FileClassifier):
 
     def classifier(self,type,file):
         if type == FileValidators.SEQUENCE.value :
-            shutil.copy2(file, "build/sql/fisica/sequence")
+            module = self._extractor.getModule(file)
+            path = self._router.getPath("sequence",module)
+            shutil.copy2(file, path)
+            shutil.copy2(file,path)
         else:
             self.next.classifier(type,file)
