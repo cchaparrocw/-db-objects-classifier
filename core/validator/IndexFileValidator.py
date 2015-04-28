@@ -14,7 +14,7 @@ class IndexFileValidator(FileValidator):
         self.next = next
 
     def isIndex(self,file):
-        expressionPackage = '[a-zA-Z][a-zA-Z][T]+_.*((_i[0-9]*).sql)'
+        expressionPackage = '[a-zA-Z][a-zA-Z][T].*(_I([a-zA-Z0-9]*).(sql|SQL))$'
         return self.checkExpression(expressionPackage,file)
 
     def validate(self, file ):

@@ -6,6 +6,7 @@ from core.classifier.PackageFileClassifier import PackageFileClassifier
 from core.classifier.ViewFileClassifier import ViewFileClassifier
 from core.classifier.ConstraintFileClassifier import ConstraintFileClassifier
 from core.classifier.DefaultFileClassifier import DefaultFileClassifier
+from core.classifier.IndexFileClassifier import IndexFileClassifier
 
 class BuilderFileClassifier():
 
@@ -17,16 +18,16 @@ class BuilderFileClassifier():
         packageFileClassifier    = PackageFileClassifier()
         sequenceFileClassifier.setNext(packageFileClassifier)
 
-
         vistaFileClassifier      = ViewFileClassifier()
         packageFileClassifier.setNext(vistaFileClassifier)
 
         constraintFileClassifier = ConstraintFileClassifier()
         vistaFileClassifier.setNext(constraintFileClassifier)
 
+        indexFileClassifier = IndexFileClassifier()
+        constraintFileClassifier.setNext(indexFileClassifier)
 
         defaultFileClassifier = DefaultFileClassifier()
-        constraintFileClassifier.setNext(defaultFileClassifier)
-
+        indexFileClassifier.setNext(defaultFileClassifier)
 
         return tableFileClassifier

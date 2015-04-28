@@ -14,7 +14,7 @@ class TableFileValidator(FileValidator):
         self.next = next
 
     def isTable(self,file):
-        expression = '[a-zA-Z][a-zA-Z][tT]+_([a-zA-Z])*.(sql|SQL)$'
+        expression = '([a-zA-Z][a-zA-Z][tT]_(?:(?!F[0-9]|CONSTRAINT|U[0-9]|PK|REFCONSTRAINT|I[0-9]|B[0-9]).)*?\.(sql|SQL))'
         return self.checkExpression(expression,file)
 
     def validate(self, file ):

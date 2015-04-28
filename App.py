@@ -45,11 +45,9 @@ def main():
     for file in files:
         builderValidator  = BuilderFileValidator()
         validator = builderValidator.build()
-        print(file)
         type = validator.validate(file)
         builderClassifier = BuilderFileClassifier()
         classifier = builderClassifier.build()
-        print(file)
         classifier.classifier(type,router.pathSource+file)
 
 

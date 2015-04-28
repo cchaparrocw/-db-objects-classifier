@@ -7,7 +7,7 @@ from  core.validator.PackageFileValidator import PackageFileValidator
 from  core.validator.VistaFileValidator import VistaFileValidator
 from  core.validator.ConstraintFileValidator import ConstraintFileValidator
 from  core.validator.DefaultFileValidator import DefaultFileValidator
-
+from  core.validator.IndexFileValidator import IndexFileValidator
 
 class BuilderFileValidator:
 
@@ -32,7 +32,10 @@ class BuilderFileValidator:
         vistaValidator.setNext(constraintValidator)
         constraintValidator.setNext(vistaValidator)
 
+        indexValidator = IndexFileValidator()
+        constraintValidator.setNext(indexValidator)
+
         defaultValidator = DefaultFileValidator()
         #apuntar el siguiente al ultimo
-        constraintValidator.setNext(defaultValidator)
+        indexValidator.setNext(defaultValidator)
         return tableValidator
