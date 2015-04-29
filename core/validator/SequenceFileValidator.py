@@ -9,7 +9,6 @@ class SequenceFileValidator(FileValidator):
         self.next = FileValidator()
 
     def setNext(self,next):
-        print("next from sequence")
         self.next = next
 
     def isSecuence(self,file):

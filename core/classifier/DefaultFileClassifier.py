@@ -14,4 +14,4 @@ class DefaultFileClassifier(FileClassifier):
 
     def classifier(self,type,file):
         path = self._router.getPath("default","")
-        shutil.copy2(file, path)
+        self.copy(file, path)

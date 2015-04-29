@@ -17,9 +17,9 @@ class PackageFileClassifier(FileClassifier):
         module = self._extractor.getModule(file)
         if type == FileValidators.PACKAGE.value :
             path = self._router.getPath("package",module)
-            shutil.copy2(file, path)
+            self.copy(file, path)
         elif type == FileValidators.PACKAGE_BODY.value:
             path = self._router.getPath("package_body",module)
-            shutil.copy2(file, path)
+            self.copy(file, path)
         else:
             self.next.classifier(type,file)

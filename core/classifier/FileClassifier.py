@@ -1,4 +1,6 @@
 # coding=utf-8
+import shutil
+import os
 from core.Router import Router
 from core.ModuleExtractor import ModuleExtractor
 class FileClassifier:
@@ -15,3 +17,10 @@ class FileClassifier:
 
     def classifier(self,type,file):
         raise NotImplementedError('subclasses must override setNext()!')
+
+    def copy(self,file,path):
+        if os.path.exists( path ):
+            shutil.copy2(file, path)
+        else:
+            os.makedirs( path )
+            shutil.copy2(file, path)

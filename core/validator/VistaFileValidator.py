@@ -42,7 +42,7 @@ class VistaFileValidator(FileValidator):
         expression = '[a-zA-Z][a-zA-Z][dD]+_'
         return self.checkExpression(expression,file)
 
-    def validate(self, file ): 
+    def validate(self, file ):
         if self.isData(file):
             return FileValidators.VIEW_DATA.value
         elif self.isJoin(file):

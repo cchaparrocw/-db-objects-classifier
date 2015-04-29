@@ -39,6 +39,7 @@ def loadFiles():
     return [ f for f in listdir(router.pathSource ) if isfile(join(router.pathSource,f)) ]
 
 def main():
+
     buildDirectories()
     files = loadFiles()
     router = Router()
@@ -49,8 +50,12 @@ def main():
         builderClassifier = BuilderFileClassifier()
         classifier = builderClassifier.build()
         classifier.classifier(type,router.pathSource+file)
-
-
-
+    """
+    list = ["CAT_CONTRATO_AGENDA_TURNO", "DNT_ACUMULADO_DISTRIBUCION","LNT_ACUMULADO_UPCH", "GET_GRUPO_ACTIVIDAD_DET","LNT_CAMBIO_ACUMULADO","ICE_LN_LINEA_INVESTIGACION"]
+    for file in list:
+        extractor = ModuleExtractor()
+        module = extractor.getModule(file)
+        print(module)
+    """
 if __name__ == "__main__":
     main()

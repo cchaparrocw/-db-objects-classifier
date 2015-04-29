@@ -23,11 +23,8 @@ class ConstraintFileValidator(FileValidator):
         return self.checkExpression(expression,file)
 
     def isUnique(self,file):
-        print(file)
         expression = '[a-zA-Z][a-zA-Z][tT]+_.*((_[uU][0-9]*).sql)'
-        print(self.checkExpression(expression,file))
         return self.checkExpression(expression,file)
-
     def validate(self, file ):
         if self.isFk(file):
             return FileValidators.CONSTRAINT_FK.value
@@ -35,5 +32,4 @@ class ConstraintFileValidator(FileValidator):
         elif self.isUnique(file):
             return FileValidators.CONSTRAINT_NOFK.value
         else :
-            print('no es Constraint')
-          #  return self.next.validate(file)
+           return self.next.validate(file)

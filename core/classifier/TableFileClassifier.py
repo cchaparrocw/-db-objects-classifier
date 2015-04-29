@@ -16,6 +16,6 @@ class TableFileClassifier(FileClassifier):
         if type == FileValidators.TABLE.value :
             module = self._extractor.getModule(file)
             path = self._router.getPath("table",module)
-            shutil.copy2(file, path)
+            self.copy(file, path)
         else:
             self.next.classifier(type,file)

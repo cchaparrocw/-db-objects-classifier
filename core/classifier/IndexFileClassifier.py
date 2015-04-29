@@ -14,8 +14,12 @@ class IndexFileClassifier(FileClassifier):
 
     def classifier(self,type,file):
         if type == FileValidators.INDEX.value :
+            print(file)
+            print( "es indice" )
             module = self._extractor.getModule(file)
+            print(module)
             path = self._router.getPath("index",module)
-            shutil.copy2(file, path)
+            print(path)
+            self.copy(file, path)
         else:
             self.next.classifier(type,file)
