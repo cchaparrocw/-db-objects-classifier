@@ -16,11 +16,11 @@ class ConstraintFileValidator(FileValidator):
         return self.checkExpression(expression,file)
 
     def isNoFk(self,file):
-        expression = '[a-zA-Z][a-zA-Z][tT]+_.*(_PK.sql)$'
+        expression = '[a-zA-Z][a-zA-Z][T]+_.*(_PK.SQL)$'
         return self.checkExpression(expression,file)
 
     def isUnique(self,file):
-        expression = '[a-zA-Z][a-zA-Z][tT]+_.*((_[uU][0-9]*).sql)'
+        expression = '[a-zA-Z][a-zA-Z][T]+_.*(_U[0-9]*.SQL)$'
         return self.checkExpression(expression,file)
     def validate(self, file ):
         print(file)
