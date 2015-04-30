@@ -12,23 +12,23 @@ class ConstraintFileValidator(FileValidator):
         self.next = next
 
     def isFk(self,file):
-        expression = '[a-zA-Z][a-zA-Z][T]+_.*(_F[0-9]*.sql|SQL)$'
+        expression = '[a-zA-Z][a-zA-Z][tT].*((_F[0-9]*)\.(sql))$'
         return self.checkExpression(expression,file)
 
     def isNoFk(self,file):
         expression = '[a-zA-Z][a-zA-Z][T]+_.*(_PK.SQL)$'
+        print(self.checkExpression(expression,file))
         return self.checkExpression(expression,file)
 
     def isUnique(self,file):
         expression = '[a-zA-Z][a-zA-Z][T]+_.*(_U[0-9]*.SQL)$'
         return self.checkExpression(expression,file)
+
     def validate(self, file ):
+        print(file)
         if self.isFk(file):
             return FileValidators.CONSTRAINT_FK.value
-
-        elif self.isUnique(file):
-            print( "is unique" )
+        elif self.isUnique(file) | self.isNoFk(file):
             return FileValidators.CONSTRAINT_NOFK.value
         else :
-           print("no sirve")
            return self.next.validate(file)
