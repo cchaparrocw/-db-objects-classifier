@@ -15,23 +15,21 @@ class ViewFileClassifier(FileClassifier):
 
     def classifier(self,type,file):
         module = self._extractor.getModule(file)
-        path = self._router.getPath("index",module)
-        shutil.copy2(file, path)
 
         if type == FileValidators.VIEW_BI.value :
             path = self._router.getPath("bi",module)
-            shutil.copy2(file, path)
+            self.copy(file, path)
         elif type == FileValidators.VIEW_DATA.value :
             path = self._router.getPath("datos",module)
-            shutil.copy2(file, path)
+            self.copy(file, path)
         elif type == FileValidators.VIEW_JOIN.value :
             path = self._router.getPath("join",module)
-            shutil.copy2(file, path)
+            self.copy(file, path)
         elif type == FileValidators.VIEW_LOV.value :
             path = self._router.getPath("lov",module)
-            shutil.copy2(file, path)
+            self.copy(file, path)
         elif type == FileValidators.VIEW_REPORT.value :
             path = self._router.getPath("report",module)
-            shutil.copy2(file, path)
+            self.copy(file, path)
         else :
             self.next.classifier(type,file)
