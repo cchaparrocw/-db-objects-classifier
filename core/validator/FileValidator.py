@@ -19,7 +19,7 @@ class FileValidator:
             Valor al que se le va verificar la expresion regular
         """
         value = value.upper()
-        result = re.match( expression,value )
+        result = re.match( expression,value,re.IGNORECASE)
         return True if result else False
 
     def setNext(self,next):
