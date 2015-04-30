@@ -11,7 +11,7 @@ from core.validator.BuilderFileValidator import BuilderFileValidator
 from core.classifier.BuilderFileClassifier import BuilderFileClassifier
 from core.Router import Router
 from core.ModuleExtractor import ModuleExtractor
-
+from core.format.ConstraintForeingKeyFormatter import ConstraintForeingKeyFormatter
 
 def buildDirectories():
     #verifico si existe la estructura creada anteriormente
@@ -39,7 +39,7 @@ def loadFiles():
     return [ f for f in listdir(router.pathSource ) if isfile(join(router.pathSource,f)) ]
 
 def main():
-
+    """
     buildDirectories()
     files = loadFiles()
     router = Router()
@@ -51,11 +51,10 @@ def main():
         classifier = builderClassifier.build()
         classifier.classifier(type,router.pathSource+file)
     """
-    list = ["CAT_CONTRATO_AGENDA_TURNO", "DNT_ACUMULADO_DISTRIBUCION","LNT_ACUMULADO_UPCH", "GET_GRUPO_ACTIVIDAD_DET","LNT_CAMBIO_ACUMULADO","ICE_LN_LINEA_INVESTIGACION"]
-    for file in list:
-        extractor = ModuleExtractor()
-        module = extractor.getModule(file)
-        print(module)
-    """
+    router = Router()
+    ConstraintForeingKey=ConstraintForeingKeyFormatter()
+    for dirName, subdirList, fileList in os.walk(router.pathDeploy):
+        print('Found directory: %s' % dirName)
+        ConstraintForeingKey.format(dirName)
 if __name__ == "__main__":
     main()
