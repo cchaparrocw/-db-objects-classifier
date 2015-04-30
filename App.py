@@ -54,7 +54,7 @@ def main():
     router = Router()
     ConstraintForeingKey=ConstraintForeingKeyFormatter()
     for dirName, subdirList, fileList in os.walk(router.pathDeploy):
-        print('Found directory: %s' % dirName)
+       # print('Found directory: %s' % dirName)
         ConstraintForeingKey.format(dirName)
 if __name__ == "__main__":
     main()

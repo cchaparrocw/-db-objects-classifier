@@ -1,17 +1,18 @@
 # coding=utf-8
+import os
 class ConstraintForeingKeyFormatter:
 
-	def isForeingKeyDirectory(self):
-		print ('its foreing?')
-		if constraitnt in self.directory:
-			return true
+	def isForeingKeyDirectory(self,directory):
+		if 'constraint' in directory and 'nofk'in directory :
+			return True
 		else:
-			return false 
+			return False 
 
 	def format(self, directory):
     	#afterline almacena el nombre del archivo anterior
     	#si son iguales se unen ambos archivos
 		AfterFile=''
-		print('format')
-		self.isForeingKeyDirectory()
-		print('\t%s' % fname)
+		if self.isForeingKeyDirectory(directory):
+			for fileList in os.walk(directory):
+				for fname in fileList:
+					print(fname.split("_"))
