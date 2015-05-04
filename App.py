@@ -12,6 +12,7 @@ from core.classifier.BuilderFileClassifier import BuilderFileClassifier
 from core.Router import Router
 from core.ModuleExtractor import ModuleExtractor
 from core.format.ConstraintForeingKeyFormatter import ConstraintForeingKeyFormatter
+from core.format.BuilderFormat import BuilderFormat
 
 def buildDirectories():
     #verifico si existe la estructura creada anteriormente
@@ -52,10 +53,12 @@ def main():
         classifier.classifier(type,router.pathSource+file)
 
     router = Router()
-    ConstraintForeingKey=ConstraintForeingKeyFormatter()
+    #ConstraintForeingKey=ConstraintForeingKeyFormatter()
     for dirName, subdirList, fileList in os.walk(router.pathDeploy):
        # print('Found directory: %s' % dirName)
-        ConstraintForeingKey.format(dirName)
-
+       #ConstraintForeingKey.format(dirName)
+       builderFormat = BuilderFormat()
+       formatter = builderFormat.build()
+       formatter.format(dirName)
 if __name__ == "__main__":
     main()

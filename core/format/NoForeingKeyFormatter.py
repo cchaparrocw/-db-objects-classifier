@@ -3,12 +3,9 @@ import os
 import re
 from core.format.FileFormatter import FileFormatter
 
-class ConstraintForeingKeyFormatter(FileFormatter):
+class NoForeingKeyFormatter(FileFormatter):
 
-	def __init__(self):
-		self.next = FileFormatter()
-
-	def isForeingKeyDirectory(self,directory):
+	def isNotForeingKeyDirectory(self,directory):
 		if 'constraint' in directory and 'fk'in directory :
 			return True
 		else:
@@ -17,23 +14,45 @@ class ConstraintForeingKeyFormatter(FileFormatter):
 	def setNext(self,next):
 		self.next = next
 
-	def tabular(self,cadena):
+
+	def tabular(self,cadena, constraint):
 		posicionForeing = cadena.rfind("FOREIGN")
 		tabulacion = cadena[:posicionForeing] + "\n\t"+cadena[posicionForeing:]
 		cadena = tabulacion
 
-		posicionReferences = cadena.rfind("REFERENCES")
+		posicionReferences = cadena.rfind( constraint )
 		tabulacion = cadena[:posicionReferences] + " \n\t\t" + cadena[posicionReferences:]
 		posicionPuntoComa = tabulacion.rfind(";")
 		tabulacion = tabulacion[:posicionPuntoComa]
 
 		return tabulacion
 
+	def tabularPrimary(self,cadena):
+		return self.tabular(cadena,"PRIMARY")
+
+	def tabularUnique(self,cadena):
+		return self.tabular(cadena,"UNIQUE")
+
+	def tabularCheck(self,cadena):
+		return self.tabular(cadena,"CHECK")
+
+	def tabularConstraint(self,cadena):
+
+		if "PRIMARY" in cadena:
+			return self.tabularPrimary(cadena)
+		elif "UNIQUE" in cadena:
+			return self.tabularUnique(cadena)
+		elif "CHECK" in cadena:
+			return self.tabularCheck(cadena)
+		else:
+			return  cadena
+
+
 	def format(self, directory):
     	#afterline almacena el nombre del archivo anterior
     	#si son iguales se unen ambos archivos
-		print(directory)
-		if self.isForeingKeyDirectory(directory):
+
+		if self.isNotForeingKeyDirectory(directory):
 			grupos = self.agrupar(directory)
 			grupos = filter(None,grupos)
 			for grupo in grupos:
@@ -41,9 +60,11 @@ class ConstraintForeingKeyFormatter(FileFormatter):
 				nombre = ""
 				for archivo in grupo:
 					cadena = open( directory +"\\"+ archivo).read()
-					concat += self.tabular(cadena)
-					concat +="\n/ \n\n"
-				 	nombre = str(archivo)[:str(archivo).rfind("_")] + ".sql"
+					if not "MODIFY" in cadena:
+						cadena = cadena.replace("\"", "")
+						concat += self.tabularConstraint(cadena)
+						concat +="\n/ \n\n"
+					 	nombre = str(archivo)[:str(archivo).rfind("_")] + ".sql"
 
 				with open( directory  +"\\"+ nombre,"a+") as f:
 					f.write(concat)
