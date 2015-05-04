@@ -9,7 +9,7 @@ class ConstraintForeingKeyFormatter(FileFormatter):
 		self.next = FileFormatter()
 
 	def isForeingKeyDirectory(self,directory):
-		if 'constraint' in directory and 'fk'in directory :
+		if 'constraint' in directory and '\\fk' in directory :
 			return True
 		else:
 			return False
@@ -32,7 +32,7 @@ class ConstraintForeingKeyFormatter(FileFormatter):
 	def format(self, directory):
     	#afterline almacena el nombre del archivo anterior
     	#si son iguales se unen ambos archivos
-		print(directory)
+		#print(directory)
 		if self.isForeingKeyDirectory(directory):
 			grupos = self.agrupar(directory)
 			grupos = filter(None,grupos)

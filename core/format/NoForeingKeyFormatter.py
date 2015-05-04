@@ -6,7 +6,8 @@ from core.format.FileFormatter import FileFormatter
 class NoForeingKeyFormatter(FileFormatter):
 
 	def isNotForeingKeyDirectory(self,directory):
-		if 'constraint' in directory and 'fk'in directory :
+		
+		if 'constraint' in directory and '\\nofk' in directory :
 			return True
 		else:
 			return False
@@ -16,6 +17,7 @@ class NoForeingKeyFormatter(FileFormatter):
 
 
 	def tabular(self,cadena, constraint):
+		#print ("entra a tabular" + constraint)
 		posicionForeing = cadena.rfind("FOREIGN")
 		tabulacion = cadena[:posicionForeing] + "\n\t"+cadena[posicionForeing:]
 		cadena = tabulacion
@@ -37,7 +39,7 @@ class NoForeingKeyFormatter(FileFormatter):
 		return self.tabular(cadena,"CHECK")
 
 	def tabularConstraint(self,cadena):
-
+		print(cadena)
 		if "PRIMARY" in cadena:
 			return self.tabularPrimary(cadena)
 		elif "UNIQUE" in cadena:
@@ -51,7 +53,7 @@ class NoForeingKeyFormatter(FileFormatter):
 	def format(self, directory):
     	#afterline almacena el nombre del archivo anterior
     	#si son iguales se unen ambos archivos
-
+		
 		if self.isNotForeingKeyDirectory(directory):
 			grupos = self.agrupar(directory)
 			grupos = filter(None,grupos)
@@ -60,11 +62,12 @@ class NoForeingKeyFormatter(FileFormatter):
 				nombre = ""
 				for archivo in grupo:
 					cadena = open( directory +"\\"+ archivo).read()
-					if not "MODIFY" in cadena:
-						cadena = cadena.replace("\"", "")
-						concat += self.tabularConstraint(cadena)
-						concat +="\n/ \n\n"
-					 	nombre = str(archivo)[:str(archivo).rfind("_")] + ".sql"
+					#if not "MODIFY" in cadena:
+					
+					cadena = cadena.replace("\"", "")
+					concat += self.tabularConstraint(cadena)
+					concat +="\n/ \n\n"
+				 	nombre = str(archivo)[:str(archivo).rfind("_")] + ".sql"
 
 				with open( directory  +"\\"+ nombre,"a+") as f:
 					f.write(concat)

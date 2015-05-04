@@ -28,6 +28,7 @@ class FileFormatter :
 				for files in fileList:
 					grupo = []
 					for archivo in files:
+						#modificar el patron para que sea definido por parametro y funcione para los demas formatos
 						pattern = "("+principal+")_(F[0-9]*)\.sql"
 						#print(pattern)
 						if self.checkExpression(pattern,archivo ):
