@@ -23,10 +23,14 @@ class ConstraintFileValidator(FileValidator):
         expression = '[a-zA-Z][a-zA-Z][T]+_.*(_U[0-9]*.SQL)$'
         return self.checkExpression(expression,file)
 
+    def isCheck(self,file):
+        expression = '[a-zA-Z][a-zA-Z][T]+_.*(_C[0-9]*\.SQL)$'
+        return self.checkExpression(expression,file)
+
     def validate(self, file ):
         if self.isFk(file):
             return FileValidators.CONSTRAINT_FK.value
-        elif self.isUnique(file) | self.isNoFk(file):
+        elif self.isUnique(file) | self.isNoFk(file) | self.isCheck(file):
             return FileValidators.CONSTRAINT_NOFK.value
         else :
            return self.next.validate(file)
