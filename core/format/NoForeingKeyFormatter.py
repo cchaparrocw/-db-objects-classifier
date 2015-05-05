@@ -60,7 +60,7 @@ class NoForeingKeyFormatter(FileFormatter):
 				concat = ""
 				nombre = ""
 				for archivo in grupo:
-					cadena = open( directory +"\\"+ archivo).read()
+					cadena += open( directory +"\\"+ archivo).read()
 					#if not "MODIFY" in cadena:
 
 					concat = cadena.replace("\"", "")
