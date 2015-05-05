@@ -3,6 +3,7 @@ from core.format.ConstraintForeingKeyFormatter import ConstraintForeingKeyFormat
 from core.format.NoForeingKeyFormatter import NoForeingKeyFormatter
 from core.format.IndexFormatter import IndexFormatter
 from core.format.PackageFormatter import PackageFormatter
+from core.format.ViewFormatter import ViewFormatter
 
 from core.format.NotFormatter import NotFormatter
 class BuilderFormat:
@@ -17,7 +18,10 @@ class BuilderFormat:
 		packageFormatter= PackageFormatter()
 		indexFormatter.setNext(packageFormatter)
 
+		viewFormatter=ViewFormatter()
+		packageFormatter.setNext(viewFormatter)
+
 		notFormatter = NotFormatter()
-		packageFormatter.setNext(notFormatter)
+		viewFormatter.setNext(notFormatter)
 
 		return constraintForeingKeyFormatter

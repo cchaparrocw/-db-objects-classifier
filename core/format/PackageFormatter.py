@@ -6,22 +6,19 @@ from core.format.FileFormatter import FileFormatter
 from core.ModuleExtractor import ModuleExtractor
 
 class PackageFormatter(FileFormatter):
+
     def format(self, directory):
         if self.isPackageDirectory(directory):
-            for fileList in os.walk(directory):
-                for files in fileList:
-                    for archivo in files:
-                        print(archivo)
-                        if( len(archivo)>2 ):
-                            extractor = ModuleExtractor()
-                            module = extractor.getModule(archivo)
-                            path = directory+"\\"+module+"\\"+archivo
-                            self.removeFirstLine( path )
-                            #self.renameFile(path)
-		else:
+            #para obtener solo los archivos en el directorio 
+            fileList = next(os.walk(directory))[2]
+            for archivo in fileList:
+                if( len(archivo)>2 ):
+                    path = directory+"\\"+archivo
+                    self.removeFirstLine( path )
+                    self.renameFile(path)
+        else:
 			self.next.format(directory)
     def removeFirstLine(self,archivo):
-        print("entra a quitar laprimera linea" + archivo)
         lines = open(archivo).readlines()
         lines = lines[1:]
         file = open(archivo, 'w')
@@ -42,7 +39,7 @@ class PackageFormatter(FileFormatter):
 
 
     def isPackageDirectory(self,directory):
-		if '\\p' in directory :
+		if '\\package' in directory :
 			return True
 		else:
 			return False

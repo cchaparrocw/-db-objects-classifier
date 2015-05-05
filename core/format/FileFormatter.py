@@ -30,7 +30,6 @@ class FileFormatter :
 					for archivo in files:
 						#modificar el patron para que sea definido por parametro y funcione para los demas formatos
 						pattern = "("+principal+")"+expression
-						#print(pattern)
 						if self.checkExpression(pattern,archivo ):
 							grupo.append( archivo )
 					grupos.append(grupo)

@@ -18,26 +18,27 @@ class IndexFormatter(FileFormatter):
 
 	def format(self, directory):
 		if self.isIndexDirectory(directory):
-			pattern = '(_I[0-9]*)\.sql$'
+			pattern = '((_[a-zA-Z]([0-9]*)|pk)index\.(sql|SQL)$)'
 			grupos = self.agrupar(directory,pattern)
 			grupos = filter(None,grupos)
+
 			for grupo in grupos:
 				concat = ""
 				nombre = ""
 				print("--- grupo ----")
-				for archivo in grupo:
+				print(str(grupo))
 
-					if "_I" in archivo  and ".sql" in archivo:
-						extractor = ModuleExtractor()
-						module = extractor.getModule(archivo)
-						path = directory+"\\"+module+"\\"+archivo
-						print(path)
-						concat = open( path ).read()
-						concat +="\n/ \n\n"
-					 	nombre = str(archivo)[:str(archivo).rfind("_")] + ".sql"
-						print(nombre)
-					with open(  directory+"\\"+module+"\\"+ nombre,"a+") as f:
-						f.write(concat)
+				for archivo in grupo:
+					concat += open( directory +"\\"+ archivo).read()
+					#if not "MODIFY" in cadena:
+
+					#concat = cadena.replace("\"", "")
+					#concat += self.tabularConstraint(cadena)
+					#concat +="\n/ \n\n"
+				 	nombre = str(archivo)[:str(archivo).rfind("_")] + ".sql"
+
+				with open( directory  +"\\"+ nombre,"a+") as f:
+					f.write(concat)
 
 				print("---fin---")
 			for grupo in grupos:

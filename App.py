@@ -40,7 +40,7 @@ def loadFiles():
     return [ f for f in listdir(router.pathSource ) if isfile(join(router.pathSource,f)) ]
 
 def main():
-
+    """
     buildDirectories()
     files = loadFiles()
     router = Router()
@@ -51,7 +51,7 @@ def main():
         builderClassifier = BuilderFileClassifier()
         classifier = builderClassifier.build()
         classifier.classifier(type,router.pathSource+file)
-
+    """
     router = Router()
     #ConstraintForeingKey=ConstraintForeingKeyFormatter()
     for dirName, subdirList, fileList in os.walk(router.pathDeploy):
