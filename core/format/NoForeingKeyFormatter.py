@@ -65,7 +65,7 @@ class NoForeingKeyFormatter(FileFormatter):
 
 					concat = cadena.replace("\"", "")
 					#concat += self.tabularConstraint(cadena)
-					concat +="\n/ \n\n"
+					#concat +="\n/ \n\n"
 				 	nombre = str(archivo)[:str(archivo).rfind("_")] + ".sql"
 
 				with open( directory  +"\\"+ nombre,"a+") as f:
