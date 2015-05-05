@@ -60,10 +60,10 @@ class NoForeingKeyFormatter(FileFormatter):
 				concat = ""
 				nombre = ""
 				for archivo in grupo:
-					cadena += open( directory +"\\"+ archivo).read()
+					concat += open( directory +"\\"+ archivo).read()
 					#if not "MODIFY" in cadena:
 
-					concat = cadena.replace("\"", "")
+					#concat = cadena.replace("\"", "")
 					#concat += self.tabularConstraint(cadena)
 					#concat +="\n/ \n\n"
 				 	nombre = str(archivo)[:str(archivo).rfind("_")] + ".sql"
