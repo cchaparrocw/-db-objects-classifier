@@ -7,7 +7,7 @@ class Router:
         self.paths = [
             ('table',        'sql/fisica/table/%(modulo)s'),
             ('sequence',     'sql/fisica/sequence/%(modulo)s'),
-            ('indice',        'sql/fisica/index/%(modulo)s'),
+            ('indice',        'sql/fisica/indice/%(modulo)s'),
             ('constraint',   'sql/fisica/constraint'),
             ('fk',           'sql/fisica/constraint/%(modulo)s/fk'),
             ('nofk',         'sql/fisica/constraint/%(modulo)s/nofk'),

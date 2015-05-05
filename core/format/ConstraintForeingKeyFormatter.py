@@ -34,7 +34,8 @@ class ConstraintForeingKeyFormatter(FileFormatter):
     	#si son iguales se unen ambos archivos
 		#print(directory)
 		if self.isForeingKeyDirectory(directory):
-			grupos = self.agrupar(directory)
+			pattern = "_(F[0-9]*)\.sql"
+			grupos = self.agrupar(directory,pattern)
 			grupos = filter(None,grupos)
 			for grupo in grupos:
 				concat = ""

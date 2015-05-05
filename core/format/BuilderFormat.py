@@ -1,6 +1,7 @@
 # coding=utf-8
 from core.format.ConstraintForeingKeyFormatter import ConstraintForeingKeyFormatter
 from core.format.NoForeingKeyFormatter import NoForeingKeyFormatter
+from core.format.IndexFormatter import IndexFormatter
 
 from core.format.NotFormatter import NotFormatter
 class BuilderFormat:
@@ -9,7 +10,9 @@ class BuilderFormat:
 		constraintForeingKeyFormatter = ConstraintForeingKeyFormatter()
 		noForeingKeyFormatter = NoForeingKeyFormatter()
 		constraintForeingKeyFormatter.setNext( noForeingKeyFormatter )
-
+		indexFormatter = IndexFormatter()
+		noForeingKeyFormatter.setNext(indexFormatter)
 		notFormatter = NotFormatter()
-		noForeingKeyFormatter.setNext(notFormatter)
+		indexFormatter.setNext(notFormatter)
+
 		return constraintForeingKeyFormatter

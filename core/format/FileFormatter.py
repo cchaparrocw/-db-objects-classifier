@@ -12,7 +12,7 @@ class FileFormatter :
 		value = value.upper()
 		result = re.match( expression,value,re.IGNORECASE)
 		return True if result else False
-	def agrupar(self,directory):
+	def agrupar(self,directory,expression):
 		archivos = []
 		for fileList in os.walk(directory):
 			for files in fileList:
@@ -29,7 +29,7 @@ class FileFormatter :
 					grupo = []
 					for archivo in files:
 						#modificar el patron para que sea definido por parametro y funcione para los demas formatos
-						pattern = "("+principal+")_(F[0-9]*)\.sql"
+						pattern = "("+principal+")"+expression
 						#print(pattern)
 						if self.checkExpression(pattern,archivo ):
 							grupo.append( archivo )
