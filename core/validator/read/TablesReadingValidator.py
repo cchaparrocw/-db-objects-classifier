@@ -22,4 +22,4 @@ class TablesReadingValidator(ReadingValidator):
             print("soy tabla")
             return FileValidators.INDEX.value
         else:
-            self.next.validate(pathFile)
+            self.next.validate(pathFile) 

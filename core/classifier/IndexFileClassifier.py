@@ -22,4 +22,4 @@ class IndexFileClassifier(FileClassifier):
             else:
                 self.copy(file, path)
         else:
-            self.next.classifier(type,file)
+            self.next.classifier(type,file) 

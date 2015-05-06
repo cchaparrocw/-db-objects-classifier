@@ -18,4 +18,4 @@ class ReadingValidator:
         file:string
             Nombre del archivo a validar.
         """
-        raise NotImplementedError('subclasses must override validate()!')
+        raise NotImplementedError('subclasses must override validate()!') 

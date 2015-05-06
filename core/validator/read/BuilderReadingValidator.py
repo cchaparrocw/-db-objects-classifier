@@ -17,4 +17,4 @@ class BuilderReadingValidator:
 
         default = DefaultFileValidator()
         tablesValidator.setNext(default)
-        return indexValidator
+        return indexValidator 

@@ -20,4 +20,4 @@ class ConstraintReadingValidator(ReadingValidator):
         elif "ALTER TABLE" in lines and ( True for nofk in constraintsNoFk  if nofk in lines):
             return FileValidators.CONSTRAINT_NOFK.value
         else:
-            return self.next.validate(path)
+            return self.next.validate(path) 

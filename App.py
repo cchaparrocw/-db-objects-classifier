@@ -86,7 +86,7 @@ def main():
     for dirName, subdirList, fileList in os.walk(router.pathDeploy):
        builderFormat = BuilderFormat()
        formatter = builderFormat.build()
-       formatter.format(dirName)
+       formatter.format(dirName) 
 
     print("proceso finalizado")
 

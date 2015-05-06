@@ -15,7 +15,7 @@ class IndexReadingValidator(ReadingValidator):
     def isIndex( self, pathIndex ):
         lines = open(pathIndex).readlines()
         lines = ''.join([line for line in lines])
-        return True if "INDEX" in lines else False
+        return True if "INDEX" in lines else False 
 
     def validate(self,pathFile):
         if self.isIndex(pathFile):
