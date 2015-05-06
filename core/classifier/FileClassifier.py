@@ -15,7 +15,7 @@ class FileClassifier:
     def setNext(self,next):
         raise NotImplementedError('subclasses must override setNext()!')
 
-    def classifier(self,type,file):
+    def classifier(self,type,file,move=False):
         raise NotImplementedError('subclasses must override setNext()!')
 
     def copy(self,file,path):

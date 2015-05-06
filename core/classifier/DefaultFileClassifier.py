@@ -12,6 +12,6 @@ class DefaultFileClassifier(FileClassifier):
     def setNext(self,next):
         self.next = next
 
-    def classifier(self,type,file):
+    def classifier(self,type,file,move=False):
         path = self._router.getPath("default","")
         self.copy(file, path)

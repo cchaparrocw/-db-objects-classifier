@@ -9,7 +9,7 @@ class PackageFormatter(FileFormatter):
 
     def format(self, directory):
         if self.isPackageDirectory(directory):
-            #para obtener solo los archivos en el directorio 
+            #para obtener solo los archivos en el directorio
             fileList = next(os.walk(directory))[2]
             for archivo in fileList:
                 if( len(archivo)>2 ):
@@ -27,6 +27,8 @@ class PackageFormatter(FileFormatter):
         file.close()
 
     def renameFile(self,archivo):
+        if archivo.endswith(".sql"):
+            return
         #revisa si es la definicion del paquete
         if "pks" in archivo:
             renameFile = archivo[:archivo.rfind("pks")] + "sql"
@@ -34,6 +36,7 @@ class PackageFormatter(FileFormatter):
         if "pkb" in archivo:
             renameFile = archivo[:archivo.rfind("pkb")] + "sql"
         os.rename(archivo,renameFile)
+
     def setNext(self,next):
         self.next = next
 

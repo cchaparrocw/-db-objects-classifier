@@ -12,7 +12,7 @@ class ConstraintFileClassifier(FileClassifier):
     def setNext(self,next):
         self.next = next
 
-    def classifier(self,type,file):
+    def classifier(self,type,file,move=False):
 
 
         if type == FileValidators.CONSTRAINT_FK.value :

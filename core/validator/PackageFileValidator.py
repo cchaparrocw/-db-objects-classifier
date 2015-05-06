@@ -14,11 +14,11 @@ class PackageFileValidator(FileValidator):
         self.next = next
 
     def isPackage(self,file):
-        expressionPackage = '[a-zA-Z][a-zA-Z][P]+_.*(.pks|.sql)$'
+        expressionPackage = '([a-zA-Z][a-zA-Z][P]+_.*(.sql)$)|(.*\.pks$)'
         return self.checkExpression(expressionPackage,file)
 
     def isPackageBody(self,file):
-        expressionPackage = '[a-zA-Z][a-zA-Z][P]+_.*(.pkb|._1.sql)$'
+        expressionPackage = '([a-zA-Z][a-zA-Z][P]+_.*(._1.sql)$)|(.*\.pkb$)'
         return self.checkExpression(expressionPackage,file)
 
     def validate(self, file ):

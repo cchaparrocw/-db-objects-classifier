@@ -13,7 +13,7 @@ class PackageFileClassifier(FileClassifier):
     def setNext(self,next):
         self.next = next
 
-    def classifier(self,type,file):
+    def classifier(self,type,file,move=False):
         module = self._extractor.getModule(file)
         if type == FileValidators.PACKAGE.value :
             path = self._router.getPath("package",module)
