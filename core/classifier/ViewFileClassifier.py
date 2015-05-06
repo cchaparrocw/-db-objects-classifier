@@ -13,7 +13,7 @@ class ViewFileClassifier(FileClassifier):
         self.next = next
 
 
-    def classifier(self,type,file,move=False):
+    def classifier(self,type,file,move):
         module = self._extractor.getModule(file)
 
         if type == FileValidators.VIEW_BI.value :
@@ -32,4 +32,4 @@ class ViewFileClassifier(FileClassifier):
             path = self._router.getPath("report",module)
             self.copy(file, path)
         else :
-            self.next.classifier(type,file) 
+            self.next.classifier(type,file,move)

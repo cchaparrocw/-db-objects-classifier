@@ -7,14 +7,11 @@ from core.validator.read.ConstraintReadingValidator import ConstraintReadingVali
 
 class BuilderReadingValidator:
     def build(self):
-
-        indexValidator = IndexReadingValidator()
-        tablesValidator = TablesReadingValidator()
-        indexValidator.setNext(tablesValidator)
-
+        tablesValidator     = TablesReadingValidator()
         constraintValidator = ConstraintReadingValidator()
-        tablesValidator.setNext( constraintValidator )
-
-        default = DefaultFileValidator()
-        tablesValidator.setNext(default)
-        return indexValidator 
+        tablesValidator.setNext(constraintValidator)
+        indexValidator      = IndexReadingValidator()
+        constraintValidator.setNext(indexValidator)
+        default             = DefaultFileValidator()
+        indexValidator.setNext(default)
+        return tablesValidator

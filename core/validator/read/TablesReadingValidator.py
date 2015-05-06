@@ -19,7 +19,6 @@ class TablesReadingValidator(ReadingValidator):
 
     def validate(self,pathFile):
         if self.isTable(pathFile):
-            print("soy tabla")
-            return FileValidators.INDEX.value
+            return FileValidators.TABLE.value
         else:
-            self.next.validate(pathFile) 
+            return self.next.validate(pathFile)

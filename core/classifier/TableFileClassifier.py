@@ -12,10 +12,10 @@ class TableFileClassifier(FileClassifier):
     def setNext(self,next):
         self.next = next
 
-    def classifier(self,type,file,move=False):
-        if type == FileValidators.TABLE.value :
+    def classifier(self,tipo,file,move=False):
+        if tipo == FileValidators.TABLE.value :
             module = self._extractor.getModule(file)
             path = self._router.getPath("table",module)
             self.copy(file, path)
         else:
-            self.next.classifier(type,file) 
+            self.next.classifier(tipo,file,move)

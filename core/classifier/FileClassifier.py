@@ -23,4 +23,4 @@ class FileClassifier:
             shutil.copy2(file, path)
         else:
             os.makedirs( path )
-            shutil.copy2(file, path) 
+            shutil.copy2(file, path)

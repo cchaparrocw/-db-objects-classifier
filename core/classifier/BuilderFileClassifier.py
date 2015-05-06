@@ -27,7 +27,7 @@ class BuilderFileClassifier():
         indexFileClassifier = IndexFileClassifier()
         constraintFileClassifier.setNext(indexFileClassifier)
 
-        defaultFileClassifier = DefaultFileClassifier() 
+        defaultFileClassifier = DefaultFileClassifier()
         indexFileClassifier.setNext(defaultFileClassifier)
 
         return tableFileClassifier

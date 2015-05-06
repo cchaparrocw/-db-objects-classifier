@@ -22,4 +22,4 @@ class PackageFileClassifier(FileClassifier):
             path = self._router.getPath("package_body",module)
             self.copy(file, path)
         else:
-            self.next.classifier(type,file) 
+            self.next.classifier(type,file,move)

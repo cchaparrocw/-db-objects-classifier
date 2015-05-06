@@ -74,19 +74,27 @@ def main():
     #proceso para los archivos que quedaron en dafault
     print("iniciando proceso en default...")
     files = loadFilesDefault()
+    #print(files)
+    pathDefault = router.getPath("default","")
+
     for file in files:
+        print("file")
+        print(file)
         builderReadingValidator = BuilderReadingValidator()
         readingValidator = builderReadingValidator.build()
-        type = readingValidator.validate(router.pathSource+file)
+        tipo= readingValidator.validate(pathDefault+"/"+file)
+        #tipo = 1
+        print("type:")
+        print(tipo)
         builderClassifier = BuilderFileClassifier()
         classifier = builderClassifier.build()
-        print(" move = True")
-        classifier.classifier(type,router.pathSource+file,move=True)
+        if( tipo is not None  and  tipo != 0):
+            classifier.classifier(tipo,pathDefault+"/"+file,True)
 
-    for dirName, subdirList, fileList in os.walk(router.pathDeploy):
-       builderFormat = BuilderFormat()
-       formatter = builderFormat.build()
-       formatter.format(dirName) 
+    #for dirName, subdirList, fileList in os.walk(router.pathDeploy):
+    #   builderFormat = BuilderFormat()
+    #   formatter = builderFormat.build()
+    #   formatter.format(dirName)
 
     print("proceso finalizado")
 
