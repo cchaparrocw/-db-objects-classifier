@@ -1,0 +1,1 @@
+python "schema_ora modificado.py" "connect_string = cx_Oracle.makedsn('soporte.casewaresa.com', 1521, 'soporte')" iceberg_pre icebergpre2013  + OPTIONS
