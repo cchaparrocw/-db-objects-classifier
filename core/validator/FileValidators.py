@@ -3,7 +3,7 @@
 from enum import Enum
 class FileValidators(Enum):
     NO_VALID = 0
-    TABLE = 14
+    TABLE = 1
     SEQUENCE = 2
     INDEX = 3
     PACKAGE = 4

@@ -16,6 +16,8 @@ from core.format.BuilderFormat import BuilderFormat
 
 from core.validator.read.BuilderReadingValidator import BuilderReadingValidator
 
+from core.extractor.GetSchema import GetSchema
+
 def buildDirectories():
     #verifico si existe la estructura creada anteriormente
     #para eliminarla
@@ -69,7 +71,7 @@ def main():
        builderFormat = BuilderFormat()
        formatter = builderFormat.build()
        formatter.format(dirName)
-    """
+    
     print("proceso normal finalizado")
     #proceso para los archivos que quedaron en dafault
     print("iniciando proceso en default...")
@@ -95,7 +97,8 @@ def main():
     #   builderFormat = BuilderFormat()
     #   formatter = builderFormat.build()
     #   formatter.format(dirName)
-
+"""
+    get_schema  = GetSchema()
     print("proceso finalizado")
 
 
