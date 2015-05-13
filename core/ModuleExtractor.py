@@ -13,9 +13,14 @@ class ModuleExtractor:
             module = arr[1]
             module = module[:2]
             return module.lower()
-        else:
+        elif self.isBAS(file):
+            return ""
+        elif file.find("_")==3:
             module =  file[:2]
             return module.lower()
         return ""
     def isICE(self,file):
         return file[:3]=="ICE"
+
+    def isBAS(self,file):
+        return file[:3]=="BAS"

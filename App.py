@@ -16,7 +16,7 @@ from core.format.BuilderFormat import BuilderFormat
 
 from core.validator.read.BuilderReadingValidator import BuilderReadingValidator
 
-from core.extractor.GetSchema import GetSchema
+from core.extractor.GetFiles import getfiles 
 
 def buildDirectories():
     #verifico si existe la estructura creada anteriormente
@@ -51,7 +51,7 @@ def loadFilesDefault():
 
 def main():
 
-    #buildDirectories()
+    buildDirectories()
     #files = loadFiles()
     router = Router()
     """
@@ -98,7 +98,8 @@ def main():
     #   formatter = builderFormat.build()
     #   formatter.format(dirName)
 """
-    get_schema  = GetSchema()
+    get_files = getfiles()
+    get_files.connect();
     print("proceso finalizado")
 
 

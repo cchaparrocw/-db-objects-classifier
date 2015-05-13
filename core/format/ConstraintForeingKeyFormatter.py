@@ -46,8 +46,7 @@ class ConstraintForeingKeyFormatter(FileFormatter):
 					#concat +="\n/ \n\n"
 				 	nombre = str(archivo)[:str(archivo).rfind("_")] + ".sql"
 
-				with open( directory  +"\\"+ nombre,"a+") as f:
-					f.write(concat)
+				
 
 			for grupo in grupos:
 				for archivo in grupo:
